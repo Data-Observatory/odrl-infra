@@ -2,6 +2,7 @@
 FROM node:20-alpine as frontend-build
 WORKDIR /app
 COPY frontend/package.json frontend/package-lock.json ./
+RUN npm install uuid
 RUN npm ci
 COPY frontend ./
 ARG GOOGLE_CLIENT_ID

@@ -3,11 +3,12 @@ import { useMutation } from '@tanstack/react-query';
 import { FileCode, Save, RefreshCw, CheckCircle, Code } from 'lucide-react';
 import api from '../services/api';
 import { cn } from '../lib/utils';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function PolicyBuilder() {
     const [formData, setFormData] = useState({
         type: 'Offer',
-        uid: `did:oyd:${crypto.randomUUID()}`,
+        uid: `did:oyd:${uuidv4()}`,
         assigner: '',
         assignee: '',
         target: '',
@@ -62,7 +63,7 @@ export default function PolicyBuilder() {
     };
 
     const refreshUid = () => {
-        setFormData(prev => ({ ...prev, uid: `did:oyd:${crypto.randomUUID()}` }));
+        setFormData(prev => ({ ...prev, uid: `did:oyd:${uuidv4()}` }));
     };
 
     const policyJson = generateJson();

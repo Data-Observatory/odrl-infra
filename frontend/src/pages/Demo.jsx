@@ -5,6 +5,7 @@ import api from '../services/api';
 import ResolverLink from '../components/ResolverLink';
 import { cn } from '../lib/utils';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const SCENARIOS = {
     group: {
@@ -106,7 +107,7 @@ export default function Demo() {
             const policyPayload = {
                 "@context": "https://www.w3.org/ns/odrl.jsonld",
                 "type": "Offer",
-                "uid": `${crypto.randomUUID()}`,
+                "uid": `${uuidv4()}`,
                 "profile": "http://example.com/odrl:profile:01",
                 "permission": [{
                     "target": "http://example.com/movie/123",
