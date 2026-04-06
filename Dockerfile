@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y \
 # Copy and install local OYDID gem source
 COPY oydid/ruby-gem /usr/src/oydid-gem
 WORKDIR /usr/src/oydid-gem
+RUN gem uninstall openssl -a -x
 RUN gem build oydid.gemspec && gem install oydid-*.gem
 
 # Install Python dependencies
